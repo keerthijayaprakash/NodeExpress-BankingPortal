@@ -41,7 +41,7 @@ app.post('/transfer', function (request, response) {
     accounts[toAccount].balance += transferAmount;
 
     var accountsJSON = JSON.stringify(accounts);
-    fs.writeFileSync(path.join(__dirname, './json/accounts.json'), accountsJSON, { encoding: 'utf8' });
+    fs.writeFileSync(path.join(__dirname, '.../../src/json/accounts.json'), accountsJSON, 'utf8');
 
     response.render('transfer', { message: 'Transfer Completed' });
 });
@@ -55,7 +55,7 @@ app.post('/payment', function (request, response) {
     accounts.credit.available += parseInt(request.body.amount)
 
     var accountsJSON = JSON.stringify(accounts);
-    fs.writeFileSync(path.join(__dirname, './json/accounts.json'), accountsJSON, { encoding: 'utf8' });
+    fs.writeFileSync(path.join(__dirname, '../../src/json/accounts.json'), accountsJSON, 'utf8');
 
     response.render('payment', { message: 'Payment Successful', account: accounts.credit });
 });
